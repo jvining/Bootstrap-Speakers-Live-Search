@@ -1,4 +1,5 @@
 // Bootstrap Speakers Live Search
+
 $(document).ready(function(){
 	$(".search").keyup(function(){
 		var str = $(".search").val();
