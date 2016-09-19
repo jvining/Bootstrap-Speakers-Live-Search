@@ -69,7 +69,12 @@
 				  <input type="text" class="search form-control" placeholder="Find a speaker..." aria-describedby="sizing-addon2">
 				</div>
   			</div> 
-  		</div> 
+  			<div class="errorbox voffset3 hidden">
+				<div class="col-xs-12 text-center">
+					<h3>No speakers found</h3>
+				</div>
+			</div>
+   		</div> 
  		<div class="row">
  			<div class="speaker-listing" id="Nilesh Dalal">
 			    <div class="col-md-3 col-sm-4 col-xs-12 text-center speaker-image">
@@ -258,19 +263,22 @@
 	  $('[data-toggle="tooltip"]').tooltip()
 	})
 	
- 	// Bootstrap Speakers Live Search
-	$(document).ready(function(){
-		$(".search").keyup(function(){
+	// Bootstrap Speakers Live Search
+	$(document).ready(function() {
+		$('.search').attr( "placeholder", "Search for Speakers" ); 
+		$(".search").keyup(function() {
 			var str = $(".search").val();
-			$(".speaker-listing").each(function(index){
-				if($(this).attr("id")){
-					if(!$(this).attr("id").match(new RegExp(str, "i"))){
-						$(this).fadeOut('fast');
-	 				}else{
-						$(this).fadeIn('fast');
-	 				}
+			$(".speaker-listing").each(function(index) {
+				if ($(this).attr("id")) {
+					if (!$(this).attr("id").match(new RegExp(str, "i"))) {
+						$(this).fadeOut("10");
+						$(".errorbox").removeClass("hidden");
+					} else {
+						$(this).fadeIn("10");
+						$(".errorbox").addClass("hidden");
+					}
 				}
-			});		
+			});
 		});
 	});
 </script>
